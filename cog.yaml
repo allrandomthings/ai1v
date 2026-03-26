@@ -1,0 +1,25 @@
+# cog.yaml
+build:
+  gpu: true
+  cuda: "12.1"
+  system_packages:
+    - "ffmpeg"
+  python_version: "3.11"
+  python_packages:
+    - "torch==2.3.1"
+    - "torchvision"
+    - "torchaudio"
+    - "transformers"
+    - "accelerate"
+    - "sentencepiece"
+    - "imageio"
+    - "imageio-ffmpeg"
+    - "hf-transfer"
+    - "requests"
+    - "peft"
+    - "protobuf"
+  run:
+    - "pip install git+https://github.com/huggingface/diffusers.git"
+    - "python download_weights.py"
+
+predict: "predict.py:Predictor"

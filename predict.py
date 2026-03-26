@@ -126,6 +126,7 @@ class Predictor(BasePredictor):
                 "num_inference_steps": num_inference_steps,
                 "guidance_scale": guidance_scale,
                 "generator": generator,
+                "output_type": "pil",
             }
             if negative_prompt:
                 kwargs["negative_prompt"] = negative_prompt

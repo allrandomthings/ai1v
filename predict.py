@@ -2,10 +2,10 @@
 import os
 import tempfile
 import requests
-from typing import Any
 from PIL import Image
 from cog import BasePredictor, Input, Path
 import torch
+from huggingface_hub import snapshot_download
 from diffusers import WanImageToVideoPipeline
 from diffusers.utils import export_to_video
 
@@ -13,8 +13,18 @@ MODEL_ID = "Wan-AI/Wan2.2-I2V-A14B-Diffusers"
 
 class Predictor(BasePredictor):
     def setup(self) -> None:
-        """Load the model into memory to make running multiple predictions efficient"""
-        print(f"Loading {MODEL_ID} pipeline...")
+        """Download weights and load the model into memory"""
+        os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
+        hf_token = os.environ.get("HF_TOKEN")
+
+        print(f"Downloading {MODEL_ID} weights...")
+        snapshot_download(
+            repo_id=MODEL_ID,
+            ignore_patterns=["*.pt", "*.bin"],
+            token=hf_token,
+        )
+
+        print("Loading pipeline...")
         self.pipe = WanImageToVideoPipeline.from_pretrained(
             MODEL_ID,
             torch_dtype=torch.bfloat16

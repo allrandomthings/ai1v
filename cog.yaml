@@ -20,6 +20,6 @@ build:
     - "protobuf"
   run:
     - "pip install git+https://github.com/huggingface/diffusers.git"
-    - "python download_weights.py"
+    - "python /src/download_weights.py"
 
 predict: "predict.py:Predictor"

@@ -6,7 +6,7 @@ build:
     - "ffmpeg"
   python_version: "3.11"
   python_packages:
-    - "torch==2.4.1"
+    - "torch==2.5.1"
     - "torchvision"
     - "torchaudio"
     - "transformers"

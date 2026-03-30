@@ -2,7 +2,6 @@
 import os
 import shutil
 import tempfile
-from typing import Optional
 import numpy as np
 import requests
 from PIL import Image
@@ -43,11 +42,11 @@ class Predictor(BasePredictor):
             default="480p",
             choices=["480p", "720p"],
         ),
-        lora_url: Optional[str] = Input(
+        lora_url: str = Input(
             description="Optional: URL to a .safetensors LoRA file (e.g., from CivitAI).",
             default=None
         ),
-        civitai_token: Optional[str] = Input(
+        civitai_token: str = Input(
             description="Optional: CivitAI API token for gated LoRA downloads.",
             default=None
         ),

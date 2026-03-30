@@ -27,7 +27,6 @@ class Predictor(BasePredictor):
         self.pipe = WanImageToVideoPipeline.from_pretrained(
             MODEL_ID,
             torch_dtype=torch.bfloat16,
-            local_files_only=True,
         )
         # Cast VAE to float32 before CPU offload so offload hooks see the right dtype
         self.pipe.vae.to(dtype=torch.float32)

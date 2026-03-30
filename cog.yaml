@@ -20,6 +20,5 @@ build:
     - "protobuf"
   run:
     - "pip install git+https://github.com/huggingface/diffusers.git"
-    - "pip install 'huggingface-hub==0.26.2'"
 
 predict: "predict.py:Predictor"

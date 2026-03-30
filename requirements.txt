@@ -1,0 +1,12 @@
+torch==2.5.1
+torchvision==0.20.1
+numpy
+transformers
+accelerate
+sentencepiece
+Pillow
+imageio==2.36.1
+imageio-ffmpeg==0.5.1
+requests
+peft
+protobuf
